@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ getProducts, products }) => {
+const ProductList = ({ getProducts, products, deleteProduct }) => {
+
+  function someFunc() {
+    console.log('Hello');
+  }
 
   useEffect(() => {
     getProducts();
+    return someFunc();
   }, []);
 
   return (
@@ -25,7 +30,7 @@ const ProductList = ({ getProducts, products }) => {
               <Button variant="success">Detail</Button>
             </Link>
 
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={() => deleteProduct(item.id)} >Delete</Button>
           </Card.Body>
         </Card>
       ))}
